@@ -1,0 +1,21 @@
+# Flutter/Dart
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+pubspec.lock
+
+# IDE / tooling
+.idea/
+.vscode/
+*.iml
+
+# Kiro internal (agent workspace artifacts)
+.kiro/
+".kiro "/
+".kiro."/
+
+# OS
+.DS_Store
+Thumbs.db

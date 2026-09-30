@@ -1,0 +1,64 @@
+{
+  "upgrades": [
+    {
+      "id": "damage_up",
+      "name": "Overclock",
+      "description": "+20% weapon damage",
+      "icon": "damage",
+      "color": "#FF2E97",
+      "stat": "damageMult",
+      "amount": 0.20,
+      "maxStacks": 8
+    },
+    {
+      "id": "firerate_up",
+      "name": "Rapid Cycler",
+      "description": "+15% fire rate",
+      "icon": "firerate",
+      "color": "#00E5FF",
+      "stat": "fireRateMult",
+      "amount": 0.15,
+      "maxStacks": 8
+    },
+    {
+      "id": "movespeed_up",
+      "name": "Servo Legs",
+      "description": "+12% move speed",
+      "icon": "movespeed",
+      "color": "#00FF9C",
+      "stat": "moveSpeedMult",
+      "amount": 0.12,
+      "maxStacks": 6
+    },
+    {
+      "id": "magnet_up",
+      "name": "Mag Field",
+      "description": "+35% pickup radius",
+      "icon": "magnet",
+      "color": "#FFE600",
+      "stat": "magnetMult",
+      "amount": 0.35,
+      "maxStacks": 6
+    },
+    {
+      "id": "maxhp_up",
+      "name": "Nano Plating",
+      "description": "+25 max HP (and heal)",
+      "icon": "maxhp",
+      "color": "#7C4DFF",
+      "stat": "maxHpFlat",
+      "amount": 25,
+      "maxStacks": 8
+    },
+    {
+      "id": "weapon_level",
+      "name": "Weapon Upgrade",
+      "description": "Level up the Plasma Pistol",
+      "icon": "weapon",
+      "color": "#FFFFFF",
+      "stat": "weaponLevel",
+      "amount": 1,
+      "maxStacks": 7
+    }
+  ]
+}

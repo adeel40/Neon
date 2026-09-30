@@ -1,0 +1,42 @@
+# TEMPLATE — do not use as-is.
+#
+# `flutter create` generates a real pubspec.yaml with the correct SDK
+# constraints for your machine. Run the `flutter pub add` commands in SETUP.md
+# to populate `dependencies:` with current versions. Then merge the `assets:`
+# block shown below into the generated file's `flutter:` section.
+#
+# This template exists only to document the assets declaration and the shape
+# of the dependency list — the version numbers are intentionally omitted so
+# nothing is guessed.
+
+name: neon_horde
+description: "NEON HORDE: Last Signal — a neon cyberpunk survivor-like."
+publish_to: "none"
+
+environment:
+  # `flutter create` fills this with your SDK's Dart constraint.
+  sdk: ">=3.4.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # Added via `flutter pub add` (versions resolved by pub.dev):
+  #   flame:            <resolved>
+  #   flutter_riverpod: <resolved>
+  #   hive:             <resolved>
+  #   hive_flutter:     <resolved>
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  # Added via `flutter pub add --dev`:
+  #   hive_generator: <resolved>
+  #   build_runner:   <resolved>
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/data/weapons.json
+    - assets/data/enemies.json
+    - assets/data/upgrades.json

@@ -1,0 +1,35 @@
+{
+  "chaser": {
+    "id": "chaser",
+    "name": "Chaser Bot",
+    "color": "#FF2E97",
+    "radius": 14,
+    "baseHp": 20,
+    "speed": 55,
+    "contactDamage": 8,
+    "xp": 1,
+    "weight": 60
+  },
+  "swarm": {
+    "id": "swarm",
+    "name": "Swarm Drone",
+    "color": "#FFE600",
+    "radius": 9,
+    "baseHp": 8,
+    "speed": 95,
+    "contactDamage": 4,
+    "xp": 1,
+    "weight": 35
+  },
+  "tank": {
+    "id": "tank",
+    "name": "Heavy Unit",
+    "color": "#7C4DFF",
+    "radius": 22,
+    "baseHp": 90,
+    "speed": 32,
+    "contactDamage": 16,
+    "xp": 4,
+    "weight": 5
+  }
+}

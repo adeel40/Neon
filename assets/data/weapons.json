@@ -1,0 +1,22 @@
+{
+  "plasma_pistol": {
+    "id": "plasma_pistol",
+    "name": "Plasma Pistol",
+    "description": "Fires a bolt at the nearest enemy.",
+    "color": "#00E5FF",
+    "projectileSpeed": 420,
+    "projectileRadius": 5,
+    "projectileLifetime": 2.0,
+    "pierce": 0,
+    "levels": [
+      { "level": 1, "damage": 10, "fireInterval": 0.90, "projectiles": 1 },
+      { "level": 2, "damage": 13, "fireInterval": 0.82, "projectiles": 1 },
+      { "level": 3, "damage": 16, "fireInterval": 0.74, "projectiles": 1 },
+      { "level": 4, "damage": 20, "fireInterval": 0.66, "projectiles": 2 },
+      { "level": 5, "damage": 24, "fireInterval": 0.58, "projectiles": 2 },
+      { "level": 6, "damage": 29, "fireInterval": 0.50, "projectiles": 2 },
+      { "level": 7, "damage": 35, "fireInterval": 0.44, "projectiles": 3 },
+      { "level": 8, "damage": 44, "fireInterval": 0.38, "projectiles": 3 }
+    ]
+  }
+}
