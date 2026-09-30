@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>NEON HORDE: Last Signal — 3D</title>
+  <link rel="stylesheet" href="./styles.css" />
+
+  <!--
+    Three.js is loaded from a CDN via an import map so `import ... from 'three'`
+    works with no build step. Just serve this folder (see README) and open it.
+    We pin a specific version so the API never shifts under us.
+  -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- The renderer canvas is created and inserted by main.js -->
+  <div id="app"></div>
+
+  <!-- ============================ HUD ============================ -->
+  <div id="hud" class="hidden">
+    <div class="bars">
+      <div class="bar xp"><div id="xpFill" class="fill"></div></div>
+      <div class="bar hp">
+        <div id="hpFill" class="fill"></div>
+        <span id="hpText" class="barLabel">100 / 100</span>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><span class="k">LV</span><span id="statLevel" class="v">1</span></div>
+      <div class="stat"><span class="k">TIME</span><span id="statTime" class="v">00:00</span></div>
+      <div class="stat"><span class="k">KILLS</span><span id="statKills" class="v">0</span></div>
+      <button id="pauseBtn" class="pauseBtn" aria-label="Pause">II</button>
+    </div>
+    <div id="combo" class="combo"></div>
+  </div>
+
+  <!-- ===================== On-screen joystick ==================== -->
+  <div id="joystick" class="joystick hidden">
+    <div id="joystickKnob" class="knob"></div>
+  </div>
+
+  <!-- ======================= Start screen ======================= -->
+  <div id="startScreen" class="overlay">
+    <div class="panel">
+      <h1 class="title">NEON HORDE</h1>
+      <p class="subtitle">LAST SIGNAL &mdash; 3D</p>
+      <p class="hint">
+        Survive 10 minutes in the neon city.<br />
+        <b>Move:</b> WASD / Arrows, or drag anywhere on touch.<br />
+        Weapons fire automatically. Collect gems, level up, evolve.
+      </p>
+      <button id="startBtn" class="bigBtn">START RUN</button>
+    </div>
+  </div>
+
+  <!-- ==================== Level-up overlay ====================== -->
+  <div id="levelUp" class="overlay hidden">
+    <div class="panel">
+      <h2 class="levelUpTitle">LEVEL UP</h2>
+      <p id="levelUpSub" class="subtitle">Choose an upgrade</p>
+      <div id="cards" class="cards"></div>
+      <div class="rerollRow">
+        <button id="rerollBtn" class="smallBtn">REROLL <span id="rerollCount"></span></button>
+        <button id="banishBtn" class="smallBtn">BANISH <span id="banishCount"></span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== Game-over overlay ===================== -->
+  <div id="gameOver" class="overlay hidden">
+    <div class="panel">
+      <h2 id="gameOverTitle" class="title">CONNECTION LOST</h2>
+      <p id="gameOverSub" class="subtitle">You were overrun</p>
+      <div class="resultRows">
+        <div class="resultRow"><span>Survived</span><span id="resTime">00:00</span></div>
+        <div class="resultRow"><span>Level reached</span><span id="resLevel">1</span></div>
+        <div class="resultRow"><span>Kills</span><span id="resKills">0</span></div>
+      </div>
+      <button id="restartBtn" class="bigBtn">RESTART</button>
+    </div>
+  </div>
+
+  <!-- Debug overlay (toggle with the ` key) -->
+  <div id="debug" class="debug hidden"></div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

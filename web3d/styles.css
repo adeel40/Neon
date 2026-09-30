@@ -1,0 +1,261 @@
+/* NEON HORDE 3D — UI styling. Cyberpunk neon on near-black. */
+
+:root {
+  --cyan: #00e5ff;
+  --pink: #ff2e97;
+  --green: #00ff9c;
+  --yellow: #ffe600;
+  --purple: #7c4dff;
+  --bg: #05060d;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: #fff;
+  font-family: "Segoe UI", Roboto, system-ui, sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: none; /* we handle all touch ourselves */
+}
+
+#app, #app canvas { display: block; width: 100%; height: 100%; }
+
+.hidden { display: none !important; }
+
+/* ============================ HUD ============================ */
+#hud {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  padding: max(10px, env(safe-area-inset-top)) 14px 10px;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.bars { display: flex; flex-direction: column; gap: 6px; }
+
+.bar {
+  position: relative;
+  width: 100%;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+.bar.xp { height: 8px; }
+.bar.hp { height: 16px; }
+
+.bar .fill {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 100%;
+  transform-origin: left center;
+  transition: transform 0.12s linear, background 0.2s;
+  border-radius: 8px;
+}
+.bar.xp .fill { background: var(--green); box-shadow: 0 0 10px var(--green); }
+.bar.hp .fill { background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
+
+.barLabel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  text-shadow: 0 1px 2px #000;
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 10px;
+}
+.stat { display: flex; flex-direction: column; align-items: center; }
+.stat .k { font-size: 9px; letter-spacing: 2px; color: rgba(255,255,255,0.55); }
+.stat .v { font-size: 16px; font-weight: 800; text-shadow: 0 0 8px var(--cyan); }
+
+.pauseBtn {
+  pointer-events: auto;
+  margin-left: auto;
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  border: 1.5px solid var(--cyan);
+  background: rgba(0, 229, 255, 0.08);
+  color: var(--cyan);
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.combo {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: var(--yellow);
+  text-shadow: 0 0 14px var(--yellow);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+/* ===================== On-screen joystick ==================== */
+.joystick {
+  position: fixed;
+  width: 140px; height: 140px;
+  margin: -70px 0 0 -70px; /* center on touch point */
+  border-radius: 50%;
+  border: 2px solid rgba(0, 229, 255, 0.4);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.25);
+  pointer-events: none;
+  z-index: 15;
+}
+.joystick .knob {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 56px; height: 56px;
+  margin: -28px 0 0 -28px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 22px var(--cyan);
+}
+
+/* ========================= Overlays ========================= */
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(3, 4, 10, 0.82);
+  backdrop-filter: blur(3px);
+  z-index: 40;
+  padding: 24px;
+}
+
+.panel {
+  width: 100%;
+  max-width: 460px;
+  text-align: center;
+}
+
+.title {
+  font-size: 44px;
+  font-weight: 900;
+  letter-spacing: 6px;
+  color: var(--cyan);
+  text-shadow: 0 0 24px var(--cyan);
+}
+.levelUpTitle {
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: var(--green);
+  text-shadow: 0 0 20px var(--green);
+}
+.subtitle {
+  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 3px;
+  font-size: 13px;
+}
+.hint {
+  margin: 22px 0;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+}
+
+.bigBtn {
+  margin-top: 20px;
+  padding: 16px 44px;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: var(--cyan);
+  background: rgba(0, 229, 255, 0.1);
+  border: 2.5px solid var(--cyan);
+  border-radius: 14px;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+  cursor: pointer;
+  transition: transform 0.08s, box-shadow 0.2s;
+}
+.bigBtn:active { transform: scale(0.96); }
+
+/* Upgrade cards */
+.cards { display: flex; flex-direction: column; gap: 12px; margin-top: 22px; }
+.card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  text-align: left;
+  border-radius: 14px;
+  border: 2px solid var(--cyan);
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  transition: transform 0.08s, box-shadow 0.2s;
+}
+.card:active { transform: scale(0.98); }
+.card .icon {
+  flex: 0 0 auto;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  border: 2px solid currentColor;
+}
+.card .body { flex: 1; }
+.card .name { font-size: 17px; font-weight: 800; }
+.card .desc { font-size: 12px; color: rgba(255,255,255,0.72); margin-top: 2px; }
+.card .rarity { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
+.card .stacks { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.6); }
+
+.rerollRow { display: flex; gap: 12px; justify-content: center; margin-top: 18px; }
+.smallBtn {
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--yellow);
+  background: rgba(255, 230, 0, 0.08);
+  border: 2px solid var(--yellow);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.smallBtn:disabled { opacity: 0.35; cursor: default; }
+
+.resultRows { margin: 22px 0; }
+.resultRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 4px;
+  font-size: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.resultRow span:first-child { color: rgba(255,255,255,0.65); }
+.resultRow span:last-child { font-weight: 800; }
+
+/* Debug */
+.debug {
+  position: fixed;
+  left: 8px; bottom: 8px;
+  padding: 8px 10px;
+  font-family: monospace;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--green);
+  background: rgba(0,0,0,0.55);
+  border: 1px solid var(--green);
+  border-radius: 8px;
+  white-space: pre;
+  z-index: 50;
+  pointer-events: none;
+}
